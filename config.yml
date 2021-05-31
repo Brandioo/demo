@@ -1,0 +1,49 @@
+template: Hello, %s!
+defaultName: Stranger
+
+logging:
+  level: INFO
+  loggers:
+    demo: DEBUG
+
+
+message: Hello Configuration World
+
+# Database settings.
+database:
+
+  # the name of your JDBC driver
+  driverClass: org.h2.Driver
+
+  # the username
+  user: root
+
+  # the password
+  password: bapinjo123
+
+  # the JDBC URL
+  url: jdbc:h2:./target/config
+
+
+      # the key needs to match the configuration key of the renderer (ViewRenderer::getConfigurationKey)
+viewRendererConfiguration:
+  freemarker:
+    strict_syntax: yes
+    whitespace_stripping: yes
+
+
+server:
+  #  softNofileLimit: 1000
+  #  hardNofileLimit: 1000
+  applicationConnectors:
+    - type: http
+      port: 8080
+
+
+#metrics:
+#  reporters:
+#    - type: graphite
+#      host: localhost
+#      port: 2003
+#      prefix: config
+#      frequency: 1m
