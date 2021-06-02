@@ -14,7 +14,7 @@ database:
   # the username
   user: ${DB_USER:-root}
   # the password
-  password: ${DB_PASSWD:-bapinjo123}
+  password: ${DB_PASSWD:-}
   # the JDBC URL; the database is called DWGettingStarted
   url: ${DB_HOST:-jdbc:mysql://localhost:3306/}ibackgroundcheckclean?zeroDateTimeBehavior=convertToNull&autoReconnect=true
   # the maximum amount of time to wait on an empty pool before throwing an exception
