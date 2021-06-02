@@ -5,7 +5,9 @@
       <configuration>
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="Hibernate" />
-        <datasource-mapping />
+        <datasource-mapping>
+          <factory-entry name="demo" />
+        </datasource-mapping>
         <naming-strategy-map />
       </configuration>
     </facet>
@@ -158,5 +160,10 @@
     <orderEntry type="library" name="Maven: io.dropwizard.metrics:metrics-graphite:4.1.18" level="project" />
     <orderEntry type="library" name="Maven: com.rabbitmq:amqp-client:5.11.0" level="project" />
     <orderEntry type="library" name="Maven: com.h2database:h2:1.4.200" level="project" />
+    <orderEntry type="library" name="Maven: io.dropwizard:dropwizard-jdbi:2.0.0-rc9" level="project" />
+    <orderEntry type="library" name="Maven: org.jdbi:jdbi:2.78" level="project" />
+    <orderEntry type="library" name="Maven: io.dropwizard.metrics:metrics-jdbi:4.1.18" level="project" />
+    <orderEntry type="library" name="Maven: mysql:mysql-connector-java:8.0.25" level="project" />
+    <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java:3.11.4" level="project" />
   </component>
 </module>
