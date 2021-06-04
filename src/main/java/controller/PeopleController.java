@@ -1,9 +1,9 @@
-package com.intelycare.resources;
+package controller;
 
 
-import com.intelycare.core.Person;
-import com.intelycare.db.PersonDAO;
 import io.dropwizard.hibernate.UnitOfWork;
+import model.Person;
+import service.PersonService;
 
 import javax.validation.Valid;
 import javax.ws.rs.GET;
@@ -15,11 +15,11 @@ import java.util.List;
 
 @Path("/people")
 @Produces(MediaType.APPLICATION_JSON)
-public class PeopleResource {
+public class PeopleController {
 
-    private final PersonDAO peopleDAO;
+    private final PersonService peopleDAO;
 
-    public PeopleResource(PersonDAO peopleDAO) {
+    public PeopleController(PersonService peopleDAO) {
         this.peopleDAO = peopleDAO;
     }
 

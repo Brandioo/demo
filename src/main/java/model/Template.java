@@ -1,4 +1,4 @@
-package com.intelycare.core;
+package model;
 
 import java.util.Optional;
 

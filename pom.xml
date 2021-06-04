@@ -17,7 +17,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <dropwizard.version>2.0.20</dropwizard.version>
-        <mainClass>com.intelycare.testApplication</mainClass>
+        <mainClass>testApplication</mainClass>
     </properties>
 
     <dependencyManagement>

@@ -1,16 +1,16 @@
-package com.intelycare.db;
+package service;
 
-import com.intelycare.core.Person;
+
 import io.dropwizard.hibernate.AbstractDAO;
-
+import model.Person;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
 import java.util.List;
 import java.util.Optional;
 
-public class PersonDAO extends AbstractDAO<Person> {
-    public PersonDAO(SessionFactory factory) {
+public class PersonService extends AbstractDAO<Person> {
+    public PersonService(SessionFactory factory) {
         super(factory);
     }
 
@@ -24,6 +24,6 @@ public class PersonDAO extends AbstractDAO<Person> {
 
     @SuppressWarnings("unchecked")
     public List<Person> findAll() {
-        return list((Query<Person>) namedQuery("com.example.helloworld.core.Person.findAll"));
+        return list((Query<Person>) namedQuery("findAll"));
     }
 }

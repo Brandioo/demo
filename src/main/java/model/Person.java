@@ -1,13 +1,6 @@
-package com.intelycare.core;
+package model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import java.util.Objects;
@@ -15,12 +8,12 @@ import java.util.Objects;
 @Entity
 @Table(name = "people")
 @NamedQueries(
-        {
-                @NamedQuery(
-                        name = "com.example.helloworld.core.Person.findAll",
-                        query = "SELECT p FROM Person p"
-                )
-        })
+    {
+        @NamedQuery(
+            name = "findAll",
+            query = "SELECT p FROM Person p"
+        )
+    })
 public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -91,9 +84,9 @@ public class Person {
         Person person = (Person) o;
 
         return id == person.id &&
-                yearBorn == person.yearBorn &&
-                Objects.equals(fullName, person.fullName) &&
-                Objects.equals(jobTitle, person.jobTitle);
+            yearBorn == person.yearBorn &&
+            Objects.equals(fullName, person.fullName) &&
+            Objects.equals(jobTitle, person.jobTitle);
     }
 
     @Override

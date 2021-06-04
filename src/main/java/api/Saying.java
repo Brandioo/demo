@@ -1,4 +1,4 @@
-package com.intelycare.api;
+package api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
