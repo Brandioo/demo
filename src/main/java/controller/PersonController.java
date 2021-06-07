@@ -13,10 +13,10 @@ import javax.ws.rs.core.MediaType;
 @Produces(MediaType.APPLICATION_JSON)
 public class PersonController {
 
-    private final PersonService peopleDAO;
+    private final PersonService personService;
 
     public PersonController(PersonService peopleDAO) {
-        this.peopleDAO = peopleDAO;
+        this.personService = peopleDAO;
     }
 
     @GET
@@ -26,6 +26,6 @@ public class PersonController {
     }
 
     private Person findSafely(long personId) {
-        return peopleDAO.findById(personId).orElseThrow(() -> new NotFoundException("No such user."));
+        return personService.findById(personId).orElseThrow(() -> new NotFoundException("No such user."));
     }
 }

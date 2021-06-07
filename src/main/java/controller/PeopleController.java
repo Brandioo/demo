@@ -17,22 +17,22 @@ import java.util.List;
 @Produces(MediaType.APPLICATION_JSON)
 public class PeopleController {
 
-    private final PersonService peopleDAO;
+    private final PersonService personService;
 
     public PeopleController(PersonService peopleDAO) {
-        this.peopleDAO = peopleDAO;
+        this.personService = peopleDAO;
     }
 
     @POST
     @UnitOfWork
     public Person createPerson(@Valid Person person) {
-        return peopleDAO.create(person);
+        return personService.create(person);
     }
 
     @GET
     @UnitOfWork
     public List<Person> listPeople() {
-        return peopleDAO.findAll();
+        return personService.findAll();
     }
 
 }

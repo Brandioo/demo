@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class PersonService extends AbstractDAO<Person> {
+
     public PersonService(SessionFactory factory) {
         super(factory);
     }

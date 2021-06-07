@@ -1,7 +1,6 @@
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.dropwizard.Configuration;
 import io.dropwizard.db.DataSourceFactory;
-import model.Template;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
@@ -41,10 +40,6 @@ public class testConfiguration extends Configuration {
     @JsonProperty
     public void setDefaultName(String defaultName) {
         this.defaultName = defaultName;
-    }
-
-    public Template buildTemplate() {
-        return new Template(template, defaultName);
     }
 
     @JsonProperty("database")

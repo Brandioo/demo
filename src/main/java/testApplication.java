@@ -1,6 +1,4 @@
-import controller.HelloController;
-import controller.PeopleController;
-import controller.PersonController;
+import controller.*;
 import io.dropwizard.Application;
 import io.dropwizard.assets.AssetsBundle;
 import io.dropwizard.configuration.EnvironmentVariableSubstitutor;
@@ -12,9 +10,10 @@ import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import io.dropwizard.views.ViewBundle;
 import model.Person;
-import model.Template;
+import model.Reservation;
 import org.glassfish.jersey.server.filter.RolesAllowedDynamicFeature;
 import service.PersonService;
+import service.ReservationService;
 
 import java.util.Map;
 
@@ -25,14 +24,22 @@ public class testApplication extends Application<testConfiguration> {
     }
 
 
-
     private final HibernateBundle<testConfiguration> hibernateBundle =
-        new HibernateBundle<testConfiguration>(Person.class) {
-            @Override
-            public DataSourceFactory getDataSourceFactory(testConfiguration configuration) {
-                return configuration.getDataSourceFactory();
-            }
-        };
+            new HibernateBundle<testConfiguration>(Person.class,Reservation.class) {
+                @Override
+                public DataSourceFactory getDataSourceFactory(testConfiguration configuration) {
+                    return configuration.getDataSourceFactory();
+                }
+            };
+
+/*    private final HibernateBundle<testConfiguration> hibernateBundle1 =
+            new HibernateBundle<testConfiguration>(Reservation.class) {
+                @Override
+                public DataSourceFactory getDataSourceFactory(testConfiguration configuration) {
+                    return configuration.getDataSourceFactory();
+                }
+            };*/
+
 
     @Override
     public String getName() {
@@ -43,10 +50,10 @@ public class testApplication extends Application<testConfiguration> {
     public void initialize(Bootstrap<testConfiguration> bootstrap) {
         // Enable variable substitution with environment variables
         bootstrap.setConfigurationSourceProvider(
-            new SubstitutingSourceProvider(
-                bootstrap.getConfigurationSourceProvider(),
-                new EnvironmentVariableSubstitutor(false)
-            )
+                new SubstitutingSourceProvider(
+                        bootstrap.getConfigurationSourceProvider(),
+                        new EnvironmentVariableSubstitutor(false)
+                )
         );
 
         bootstrap.addBundle(new AssetsBundle());
@@ -63,18 +70,21 @@ public class testApplication extends Application<testConfiguration> {
                 return configuration.getViewRendererConfiguration();
             }
         });
+
+
     }
 
     @Override
     public void run(testConfiguration configuration, Environment environment) {
-        final PersonService dao = new PersonService(hibernateBundle.getSessionFactory());
-        final Template template = configuration.buildTemplate();
+        final PersonService personService = new PersonService(hibernateBundle.getSessionFactory());
+        final ReservationService reservationService = new ReservationService(hibernateBundle.getSessionFactory());
 
         environment.jersey().register(RolesAllowedDynamicFeature.class);
-        environment.jersey().register(new HelloController(template));
-        environment.jersey().register(new PeopleController(dao));
-        environment.jersey().register(new PersonController(dao));
-
+        environment.jersey().register(new PeopleController(personService));
+        environment.jersey().register(new PersonController(personService));
+        environment.jersey().register(new ReservationController(reservationService));
+        environment.jersey().register(new ReservationsController(reservationService));
+        environment.jersey().register(new HelloController(configuration.getMessage()));
     }
 
 }

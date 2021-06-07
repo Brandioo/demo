@@ -1,10 +1,13 @@
 package model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import java.util.Objects;
 
+@Data
 @Entity
 @Table(name = "people")
 @NamedQueries(
@@ -31,44 +34,6 @@ public class Person {
     private int yearBorn;
 
     public Person() {
-    }
-
-    public Person(String fullName, String jobTitle, int yearBorn) {
-        this.fullName = fullName;
-        this.jobTitle = jobTitle;
-        this.yearBorn = yearBorn;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public String getJobTitle() {
-        return jobTitle;
-    }
-
-    public void setJobTitle(String jobTitle) {
-        this.jobTitle = jobTitle;
-    }
-
-    public int getYearBorn() {
-        return yearBorn;
-    }
-
-    public void setYearBorn(int yearBorn) {
-        this.yearBorn = yearBorn;
     }
 
     @Override
