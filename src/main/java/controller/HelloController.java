@@ -15,7 +15,7 @@ import java.util.concurrent.atomic.AtomicLong;
 public class HelloController {
     private final Template template;
     private final AtomicLong counter;
-    private String message;
+    private String message="Hello World";
 
     public HelloController(Template template, AtomicLong counter, String message) {
         this.template = template;
